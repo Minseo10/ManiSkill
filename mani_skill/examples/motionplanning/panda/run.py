@@ -9,7 +9,7 @@ from tqdm import tqdm
 import os.path as osp
 from mani_skill.utils.wrappers.record import RecordEpisode
 from mani_skill.trajectory.merge_trajectory import merge_trajectories
-from mani_skill.examples.motionplanning.panda.solutions import solvePushCube, solvePickCube, solveStackCube, solvePegInsertionSide, solvePlugCharger, solvePullCubeTool, solveLiftPegUpright, solvePullCube, solveDrawTriangle, solveDrawSVG, solvePlaceSphere, solveStackPyramid
+from mani_skill.examples.motionplanning.panda.solutions import solvePushCube, solvePickCube, solveStackCube, solvePegInsertionSide, solvePlugCharger, solvePullCubeTool, solveLiftPegUpright, solvePullCube, solveDrawTriangle, solveDrawSVG, solvePlaceSphere, solveStackPyramid, solveDoubleStackCube
 MP_SOLUTIONS = {
     "DrawTriangle-v1": solveDrawTriangle,
     "PickCube-v1": solvePickCube,
@@ -23,6 +23,7 @@ MP_SOLUTIONS = {
     "PullCube-v1": solvePullCube,
     "DrawSVG-v1" : solveDrawSVG,
     "StackPyramid-v1": solveStackPyramid,
+    "DoubleStackCube-v1": solveDoubleStackCube,
 }
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
@@ -48,6 +49,7 @@ def _main(args, proc_id: int = 0, start_seed: int = 0) -> str:
         obs_mode=args.obs_mode,
         control_mode="pd_joint_pos",
         render_mode=args.render_mode,
+        enable_shadow=True,
         sensor_configs=dict(shader_pack=args.shader),
         human_render_camera_configs=dict(shader_pack=args.shader),
         viewer_camera_configs=dict(shader_pack=args.shader),
