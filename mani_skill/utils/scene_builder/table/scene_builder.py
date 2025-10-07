@@ -124,7 +124,7 @@ class TableSceneBuilder(SceneBuilder):
                 )
             qpos[:, -2:] = 0.04
             self.env.agent.reset(qpos)
-            self.env.agent.robot.set_pose(sapien.Pose([-0.615, 0, 0]))
+            self.env.agent.robot.set_pose(sapien.Pose([-0.55, 0, 0]))
         elif self.env.robot_uids in [
             "xarm6_allegro_left",
             "xarm6_allegro_right",

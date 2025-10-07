@@ -50,7 +50,7 @@ class DoubleStackCubeEnv(BaseEnv):
 
     @property
     def _default_human_render_camera_configs(self):
-        pose = sapien_utils.look_at([0.6, 0.7, 0.6], [0.0, 0.0, 0.35])
+        pose = sapien_utils.look_at([0.7, 0.8, 0.6], [0.0, 0.0, 0.35])
         return CameraConfig("render_camera", pose, 1000, 1000, 1, 0.01, 100)  # Update the human rendering camera to generate images with 1000 x 1000 pixels
 
     def _load_agent(self, options: dict):
@@ -110,7 +110,7 @@ class DoubleStackCubeEnv(BaseEnv):
             sampler = randomization.UniformPlacementSampler(
                 bounds=region, batch_size=b, device=self.device
             )
-            radius = torch.linalg.norm(torch.tensor([0.02, 0.02])) + 0.001
+            radius = torch.linalg.norm(torch.tensor([0.02, 0.02])) + 0.05
             cubeA_xy = sampler.sample(radius, 100)
             cubeB_xy = sampler.sample(radius, 100, verbose=False)
             cubeC_xy = sampler.sample(radius, 100, verbose=False)
